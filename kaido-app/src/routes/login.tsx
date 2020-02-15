@@ -13,7 +13,10 @@ const Login = () => {
 
   useSoftkey(`Login`, {
     center: `Select`,
-    onKeyCenter: () => auth.login(),
+    onKeyCenter: () => {
+      navigator.spatialNavigationEnabled = true;
+      auth.login()
+    },
   })
 
   useEffect(() => setNavigation(0), [])
