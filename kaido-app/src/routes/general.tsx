@@ -17,8 +17,6 @@ const GeneralRoutes: preact.FunctionalComponent = () => {
   const { auth } = useContext(AppContext)
   const graph = new GraphService(auth)
 
-  navigator.spatialNavigationEnabled = false;
-
   return (
     <GraphContext.Provider value={{ graph }}>
       <Router onChange={handleRoute}>

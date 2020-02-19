@@ -43,8 +43,7 @@
     "device-storage:sdcard": {
       "access": "readwrite",
       "description": "Required to read and write podcasts episodes to external storage."
-    },
-    "spatialnavigation-app-manage": {}
+    }
   },
   "default_locale": "en",
   "cursor": false

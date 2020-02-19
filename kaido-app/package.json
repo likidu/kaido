@@ -9,7 +9,7 @@
     "start:development": "yarn run -s dev",
     "build": "cross-env NODE_ENV=production preact build --no-prerender --dest ../build && cp ../manifest.webapp ../build",
     "serve": "cross-env NODE_ENV=production preact build --no-prerender --dest ../build && preact serve",
-    "dev": "preact watch --port 8888",
+    "dev": "preact watch",
     "postinstall": "patch-package"
   },
   "workspaces": {
@@ -29,7 +29,7 @@
   "dependencies": {
     "emoji-regex": "^8.0.0",
     "kaido-core": "0.1.0",
-    "preact": "^10.0.0",
+    "preact": "^10.3.2",
     "preact-jsx-chai": "^3.0.0",
     "preact-markup": "^2.0.0",
     "preact-render-to-string": "^5.0.6",

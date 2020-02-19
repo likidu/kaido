@@ -14,7 +14,7 @@ const Login = () => {
   useSoftkey(`Login`, {
     center: `Select`,
     onKeyCenter: () => {
-      navigator.spatialNavigationEnabled = true;
+      window.navigator.spatialNavigationEnabled = true
       auth.login()
     },
   })

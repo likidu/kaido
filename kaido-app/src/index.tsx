@@ -1,5 +1,8 @@
 import { h } from "preact"
 import { useReducer } from "preact/hooks"
+import { ThemeProvider } from "theme-ui"
+import KaiUI from "./theme/kaiui"
+
 import { AppContext, createAppContext, LayoutTextsReducer } from "./contexts"
 
 import { AuthService } from "../../kaido-core/src/services"
@@ -15,13 +18,13 @@ if (process.env.NODE_ENV === `development`) {
 }
 
 const Root: preact.FunctionalComponent = () => {
+  window.navigator.spatialNavigationEnabled = false
+
   const authService = new AuthService()
   authService.handleRedirectCallback()
 
   const defaultTexts = {
     header: `KaiDo`,
-    softKeys: [``, ``, ``],
-    menus: [``, ``, ``],
   }
   const [texts, dispatch] = useReducer(LayoutTextsReducer, defaultTexts)
 
@@ -32,11 +35,11 @@ const Root: preact.FunctionalComponent = () => {
   })
 
   return (
-    <div id="app">
-      <AppContext.Provider value={context}>
+    <AppContext.Provider value={context}>
+      <ThemeProvider theme={KaiUI}>
         <App />
-      </AppContext.Provider>
-    </div>
+      </ThemeProvider>
+    </AppContext.Provider>
   )
 }
 

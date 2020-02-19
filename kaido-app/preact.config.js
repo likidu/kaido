@@ -1,4 +1,5 @@
 import { resolve } from "path"
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer"
 
 export default function(config, env, helpers) {
   /**
@@ -24,6 +25,7 @@ export default function(config, env, helpers) {
 
   if (env.production) {
     config.devtool = false // disable sourcemaps
+    // config.plugins.push(new BundleAnalyzerPlugin())
   }
 
   return config

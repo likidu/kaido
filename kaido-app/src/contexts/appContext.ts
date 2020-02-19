@@ -7,14 +7,9 @@ import { AuthServiceInterface } from "../../../kaido-core/src/services/authServi
  * Header, SoftKey and OptionMenu
  */
 const SET_HEADER_TEXTS = `SET_HEADER_TEXTS`
-const SET_SOFTKEY_TEXTS = `SET_SOFTKEY_TEXTS`
-const SET_MENU_TEXTS = `SET_MENU_TEXTS`
 
 type State = {}
-type Action =
-  | { type: `SET_HEADER_TEXTS`; layoutTexts: { header: string } }
-  | { type: `SET_SOFTKEY_TEXTS`; layoutTexts: { softKeys: string[] } }
-  | { type: `SET_MENU_TEXTS`; layoutTexts: { menus: string[] } }
+type Action = { type: `SET_HEADER_TEXTS`; layoutTexts: { header: string } }
 
 export const LayoutTextsReducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -23,16 +18,6 @@ export const LayoutTextsReducer = (state: State, action: Action): State => {
         ...state,
         header: action.layoutTexts.header,
       }
-    case SET_SOFTKEY_TEXTS:
-      return {
-        ...state,
-        softKeys: action.layoutTexts.softKeys,
-      }
-    case SET_MENU_TEXTS:
-      return {
-        ...state,
-        menus: action.layoutTexts.menus,
-      }
     default:
       throw new Error(`You have to specify an action type for the UI components reducer.`)
   }
@@ -40,8 +25,6 @@ export const LayoutTextsReducer = (state: State, action: Action): State => {
 
 type LayOutTextsProps = {
   header: string
-  softKeys: []
-  menus: []
 }
 
 export interface AppContextProps {
@@ -52,7 +35,9 @@ export interface AppContextProps {
 
 type createContextOptions = {
   auth: AuthServiceInterface
-  layoutTexts: {}
+  layoutTexts: {
+    header: string
+  }
   dispatch: (action: Action) => void
 }
 
